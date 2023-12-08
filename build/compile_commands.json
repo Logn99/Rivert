@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build",
+  "command": "/usr/bin/c++ -I\"/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/Rivert/inc\" -g -o Rivert/CMakeFiles/Rivert.dir/src/test.cpp.o -c \"/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/Rivert/src/test.cpp\"",
+  "file": "/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/Rivert/src/test.cpp",
+  "output": "Rivert/CMakeFiles/Rivert.dir/src/test.cpp.o"
+},
+{
+  "directory": "/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build",
+  "command": "/usr/bin/c++ -I\"/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/Playground/inc\" -I\"/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/Rivert/inc\" -g -o Playground/CMakeFiles/Playground.dir/src/main.cpp.o -c \"/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/Playground/src/main.cpp\"",
+  "file": "/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/Playground/src/main.cpp",
+  "output": "Playground/CMakeFiles/Playground.dir/src/main.cpp.o"
+}
+]

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libRivert.a CMakeFiles/Rivert.dir/src/test.cpp.o
+/usr/bin/ranlib libRivert.a
