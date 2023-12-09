@@ -1,8 +1,0 @@
-/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build/CMakeFiles/edit_cache.dir
-/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build/CMakeFiles/rebuild_cache.dir
-/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build/Rivert/CMakeFiles/Rivert.dir
-/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build/Rivert/CMakeFiles/edit_cache.dir
-/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build/Rivert/CMakeFiles/rebuild_cache.dir
-/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build/Playground/CMakeFiles/Playground.dir
-/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build/Playground/CMakeFiles/edit_cache.dir
-/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/build/Playground/CMakeFiles/rebuild_cache.dir

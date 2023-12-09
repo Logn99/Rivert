@@ -1,7 +1,0 @@
-# ninja log v5
-0	19	1702064151467564811	Rivert/CMakeFiles/Rivert.dir/src/test.cpp.o	ee704002859427b5
-20	65	1702064151511574552	Rivert/libRivert.a	adbe49a8ce7bb832
-0	275	1702064151723621484	Playground/CMakeFiles/Playground.dir/src/main.cpp.o	3ab251724a9c6373
-276	346	1702064151791636537	Playground/Playground	d9d45aa3ea56108
-1	294	1702064342351566163	Playground/CMakeFiles/Playground.dir/src/main.cpp.o	3ab251724a9c6373
-294	368	1702064342427568293	Playground/Playground	d9d45aa3ea56108

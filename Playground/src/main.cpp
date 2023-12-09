@@ -1,10 +1,12 @@
+#include "Game.h"
+
 #include<iostream>
 
-#include"test.h"
 
-int main(){
-    std::cout << "Hello World" << std::endl; 
-    int x = customAdd(1,2);
-    std::cout << x << std::endl;
-    return 1;
+int main(int argc, char* argv[])
+{
+   
+    Game* game = new Game();
+    game->init();
+    game->start();
 }
