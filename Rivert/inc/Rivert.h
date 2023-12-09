@@ -8,5 +8,9 @@ Uint32 getTicks();
 
 void delay(int time);
 
+enum rivert {
+    SPRITE_RENDERER = 0,
+    TRANSFORM = 0
+};
 
 }

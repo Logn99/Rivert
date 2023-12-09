@@ -19,7 +19,13 @@ public:
 
     bool init(const char* title, int xpos, int ypos, int width,int height, bool fullscreen);
 
+    void clearWindow(){ SDL_RenderClear(m_pRenderer); }
+
+    void presentWindow(){ SDL_RenderPresent(m_pRenderer); }
+
     void clean();
+
+    SDL_Renderer* getRenderer() const {return m_pRenderer; }
 
 private:
 

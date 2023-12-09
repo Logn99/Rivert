@@ -5,7 +5,9 @@
 
 #include "Rivert.h"
 #include "Window.h"
-
+#include "GameObject.h"
+// Tmp
+#include "SpriteRenderer.h"
 
 class Game
 {
@@ -31,9 +33,12 @@ private:
     const int FPS = 60;
     const int DELAY_TIME = 1000.0f / FPS;
 
-
     bool m_bRunning;
 
+
+    // Tmp
+
+    GameObject* gameObject;
 };
 typedef Game TheGame;
 
