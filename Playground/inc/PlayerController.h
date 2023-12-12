@@ -1,6 +1,7 @@
 #include<Behaviour.h>
 #include<InputHandler.h>
 #include<Transform.h>
+#include"SpriteRenderer.h"
 class PlayerController : public Behaviour{
 
 public:
@@ -11,7 +12,10 @@ public:
 
 private:
     Transform* m_position;
+    SpriteRenderer* m_spriteRenderer;
     int x;
+    int y;
+    int speed;
 
 
 };

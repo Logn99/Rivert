@@ -7,6 +7,7 @@
 #include"Rivert.h"
 #include"Component.h"
 
+
 class SpriteRenderer: public Component{
 
 public: 
@@ -19,13 +20,20 @@ public:
     void init();
 
     void clean();
- 
+    
+    void flipHorizontal(bool h_flip){
+        if(h_flip){
+            flip = SDL_FLIP_HORIZONTAL;
+        }else{
+            flip = SDL_FLIP_NONE;
+        }
+    }
 
 private:
 
     std::string m_spriteId;
     int m_spriteWidth;
     int m_spriteHeight;
-    
+    SDL_RendererFlip flip;
 
 };
