@@ -3,6 +3,7 @@
 #include "TextureManager.h"
 #include "Rivert.h"
 #include "Transform.h"
+#include "PlayerController.h"
 Game::Game(){
 
 }
@@ -10,20 +11,22 @@ Game::Game(){
 void Game::init(){
     m_bRunning = Window::getInstance()->init("Test Window", 100, 100, 640, 480, false);
 
-    TextureManager::getInstance()->load("/home/michael/ownCloud - Michael Zimmerli (ost.ch)@drive.switch.ch/05_Development/CPP_Projects/Rivert_Engine/Playground/assets/rect.png", "rect", Window::getInstance()->getRenderer());
+    TextureManager::getInstance()->load("../assets/rect.png", "rect", Window::getInstance()->getRenderer());
+    TextureManager::getInstance()->load("../assets/player-idle-1.png", "player", Window::getInstance()->getRenderer());
     // Tmp
     //sprite = new SpriteRenderer("rect", 225,225);
     
-    gameObject = new GameObject();
-   
-    gameObject->addComponent(new SpriteRenderer(gameObject,"rect",225,225));
-    Transform* t = (Transform*)gameObject->getComponent(Rivert::TRANSFORM);
     
 
-    std::cout << t->m_position.getX() << std::endl;
-    std::cout << t->m_position.getY() << std::endl;
+    gameObject = new GameObject("Player");
     
+    gameObject->addComponent(new SpriteRenderer(gameObject,"player",32,32));
     
+    gameObject->addComponent(new PlayerController(gameObject));
+
+    gameObject->init();
+    
+
 }
 
 
@@ -63,11 +66,15 @@ void Game::update(){
    if(InputHandler::getInstance()->isKeyDown(SDL_SCANCODE_W)){
     std::cout << "W" << std::endl;
    }
+    gameObject->update();
+
+
+    
 }
 
 void Game::draw(){
     Window::getInstance()->clearWindow();
-    gameObject->update();
+    TextureManager::getInstance()->update();
   
     Window::getInstance()->presentWindow();
 

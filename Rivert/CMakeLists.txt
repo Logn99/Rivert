@@ -10,6 +10,7 @@ set(LIB_SOURCES
     src/SpriteRenderer.cpp
     src/GameObject.cpp
     src/Transform.cpp
+    src/Behaviour.cpp
     # Add all source files in the library
 
 )

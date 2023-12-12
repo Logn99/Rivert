@@ -2,10 +2,13 @@
 #include"GameObject.h"
 #include"SpriteRenderer.h"
 #include"Transform.h"
+#include"Behaviour.h"
 #include<iostream>
 
-GameObject::GameObject(){
-    this->addComponent(new Transform(this));
+GameObject::GameObject(std::string tag){
+    m_tag = tag;
+    addComponent(new Transform(this));
+    
 }
 
 void GameObject::init(){
@@ -33,14 +36,16 @@ void GameObject::addComponent(Component* component){
 }
 
 
+
 Component* GameObject::getComponent(int type){
+    
     if(m_components.size() != 0){
-        for(std::vector<Component*>::size_type i = 0; i!= m_components.size();i++){
+        for(std::vector<Component*>::size_type i = 0; i!= m_components.size();i++){ 
             if(m_components[i]->getType() == type){
                 return m_components[i];
             }
-        }
+
+        }        
     }
-    std::cout << type << std::endl;
-    
+    return nullptr;
 }

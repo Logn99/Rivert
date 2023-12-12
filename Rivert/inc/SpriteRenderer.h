@@ -23,11 +23,9 @@ public:
 
 private:
 
-
-
     std::string m_spriteId;
     int m_spriteWidth;
     int m_spriteHeight;
-    int type = Rivert::SPRITE_RENDERER;
+    
 
 };

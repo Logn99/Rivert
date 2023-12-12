@@ -9,21 +9,34 @@ class Transform:public Component{
 public:
 
     Transform(GameObject* parent){
-        m_position = Vector2D();
+        type = Rivert::TRANSFORM;
         m_parent = parent;
+        m_position = Vector2D(0,0);
     }
-    void init() {}
+    void init(){}
     void update() {}
     void clean() {}
 
     void setPosition(float x, float y){
-        m_position.m_x = x;
-        m_position.m_y = y;
+        m_position.setX(x);
+        m_position.setY(y);
     }
-    Vector2D m_position;
 
+    void setPosition(Vector2D v){
+        m_position.setX(v.getX());
+        m_position.setY(v.getY());
+    }
+
+    float getPositionX(){
+        return m_position.getX();
+    }
+    
+    float getPositionY(){
+        return m_position.getY();
+    }
 
     private:
-    int type = Rivert::TRANSFORM;
+    
+    Vector2D m_position;
 
 };

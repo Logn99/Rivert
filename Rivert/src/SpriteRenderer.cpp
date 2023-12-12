@@ -8,6 +8,7 @@ SpriteRenderer::SpriteRenderer(GameObject* parent,std::string id,int width, int 
     m_spriteWidth = width;
     m_spriteHeight = height;
     m_parent = parent;
+    type = Rivert::SPRITE_RENDERER;
 
     
     
@@ -31,8 +32,9 @@ void SpriteRenderer::clean(){
 void SpriteRenderer::update(){ 
     
         Transform* t = (Transform*)m_parent->getComponent(Rivert::TRANSFORM);
-     
-        TextureManager::getInstance()->draw(m_spriteId,t->m_position.getX(),t->m_position.getY(),m_spriteWidth,m_spriteHeight,Window::getInstance()->getRenderer());
+        
+
+        TextureManager::getInstance()->addDraw(m_spriteId,t->getPositionX(),t->getPositionY(),m_spriteWidth,m_spriteHeight,Window::getInstance()->getRenderer());
 }
 
 
