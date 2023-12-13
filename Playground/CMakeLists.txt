@@ -19,4 +19,4 @@ target_link_libraries(${EXE_NAME} PRIVATE Rivert)
 # Include directories for the executable
 target_include_directories(${EXE_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/inc)
 
-file(COPY assets DESTINATION ${CMAKE_BINARY_DIR}/Playground)
+file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})

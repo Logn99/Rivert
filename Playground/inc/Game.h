@@ -6,6 +6,7 @@
 #include "Rivert.h"
 #include "Window.h"
 #include "GameObject.h"
+#include "Tilemap.h"
 // Tmp
 #include "SpriteRenderer.h"
 
@@ -37,8 +38,9 @@ private:
 
 
     // Tmp
-
     GameObject* gameObject;
+    GameObject* gameObject_Background;
+    TileMap* tileMap;
 };
 typedef Game TheGame;
 

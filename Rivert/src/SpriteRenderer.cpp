@@ -3,16 +3,14 @@
 #include <iostream>
 #include"Transform.h"
 
-SpriteRenderer::SpriteRenderer(GameObject* parent,std::string id,int width, int height){
+SpriteRenderer::SpriteRenderer(GameObject* parent,std::string id,int width, int height,int layer){
     m_spriteId = id;
     m_spriteWidth = width;
     m_spriteHeight = height;
     m_parent = parent;
     type = Rivert::SPRITE_RENDERER;
     flip = SDL_FLIP_NONE;
-
-    
-    
+    m_layer = layer;
 }
 
 
@@ -20,7 +18,7 @@ void SpriteRenderer::setSprite(std::string id,int width, int height){
     m_spriteId = id;
     m_spriteWidth = width;
     m_spriteHeight = height;
-    }
+}
 
 void SpriteRenderer::init(){
 
@@ -37,7 +35,7 @@ void SpriteRenderer::update(){
         Transform* t = (Transform*)m_parent->getComponent(Rivert::TRANSFORM);
         
 
-        TextureManager::getInstance()->addDraw(m_spriteId,t->getPositionX(),t->getPositionY(),m_spriteWidth,m_spriteHeight,Window::getInstance()->getRenderer(),flip);
+        TextureManager::getInstance()->addDraw(m_spriteId,t->getPositionX(),t->getPositionY(),m_spriteWidth,m_spriteHeight,Window::getInstance()->getRenderer(),m_layer,0,0,flip);
 }
 
 

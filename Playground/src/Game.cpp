@@ -5,40 +5,37 @@
 #include "Transform.h"
 #include "PlayerController.h"
 
-
 Game::Game(){
 
 }
 
 void Game::init(){
-    m_bRunning = Window::getInstance()->init("Test Window", 100, 100, 1280, 720, false);
+    m_bRunning = Window::getInstance()->init("Test Window", 100, 100, 1150, 720, false);
 
     TextureManager::getInstance()->load("build/assets/rect.png", "rect", Window::getInstance()->getRenderer());
     TextureManager::getInstance()->load("build/assets/player-idle-1.png", "player", Window::getInstance()->getRenderer());
-    // Tmp
-    //sprite = new SpriteRenderer("rect", 225,225);
+    TextureManager::getInstance()->load("build/assets/back.png", "background", Window::getInstance()->getRenderer());
+    TextureManager::getInstance()->load("build/assets/tileset.png", "tileset", Window::getInstance()->getRenderer());
     
-    
-
-    gameObject = new GameObject("Player");
-    
-    gameObject->addComponent(new SpriteRenderer(gameObject,"player",32,32));
-    
+    gameObject = new GameObject("Player"); 
+    gameObject->addComponent(new SpriteRenderer(gameObject,"player",32,32,2));
     gameObject->addComponent(new PlayerController(gameObject));
-
     gameObject->init();
-    
 
+    gameObject_Background = new GameObject("Background");
+    gameObject_Background->addComponent(new SpriteRenderer(gameObject_Background,"background",384,240,0));
+    gameObject_Background->init();
+
+    tileMap = new TileMap(16,16,1);
+    tileMap->loadMap("build/assets/Maps/map1.txt");
+    
 }
 
-
-
 void Game::start(){
-
+    
     Uint32 frameStart,frameTime;
 
     while(m_bRunning){
-
         frameStart = Rivert::getTicks();
 
         handleEvents();
@@ -47,11 +44,9 @@ void Game::start(){
   
         frameTime = Rivert::getTicks()-frameStart;
         if(frameTime < DELAY_TIME){
-            Rivert::delay(DELAY_TIME-frameTime);
+           Rivert::delay(DELAY_TIME-frameTime);
         }
     }
-
-    
 
     clean();
 }
@@ -65,8 +60,9 @@ void Game::handleEvents(){
 }
 
 void Game::update(){
-   
     gameObject->update();
+    gameObject_Background->update();
+    tileMap->update();
 
 
     

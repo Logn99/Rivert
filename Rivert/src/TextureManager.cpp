@@ -1,5 +1,6 @@
 #include "TextureManager.h"
 #include <iostream>
+#include <algorithm>
 TextureManager* TextureManager::s_pInstance = 0;
 
 
@@ -24,9 +25,18 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
     return false;
 }
 
-void TextureManager::addDraw(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip){
-    m_drawQueue.push(Drawable(id,x,y,width,height,pRenderer,flip));
-    
+void TextureManager::addDraw(std::string id, 
+                             int x, 
+                             int y, 
+                             int width, 
+                             int height, 
+                             SDL_Renderer* pRenderer, 
+                             int layer, 
+                             int row,
+                             int column,
+                             SDL_RendererFlip flip)
+    {
+    m_drawQueue.push(Drawable(id,x,y,width,height,pRenderer,layer,row,column,flip));  
 }
     
 void TextureManager::update(){
@@ -34,23 +44,39 @@ void TextureManager::update(){
 }
 
 void TextureManager::draw(){
-    
-    for (; !m_drawQueue.empty(); m_drawQueue.pop()){
-        Drawable d = (Drawable)m_drawQueue.front();
-    
-    SDL_Rect srcRect;
-    SDL_Rect destRect;
+ 
+    std::vector<Drawable> drawableVector;
 
-    srcRect.x = 0;
-    srcRect.y = 0;
-    destRect.x = d.m_x;
-    destRect.y = d.m_y;
-    srcRect.w = destRect.w = d.m_width*5;
-    srcRect.h = destRect.h = d.m_height*5;
-    
-    SDL_RenderCopyEx(d.m_pRenderer, m_textureMap[d.m_id], &srcRect,
-                     &destRect, 0, 0, d.m_flip);
-    }   
+    while (!m_drawQueue.empty()) {
+        // Move the front element from the queue to the vector
+        drawableVector.push_back(std::move(m_drawQueue.front()));
+        // Remove the element from the queue
+        m_drawQueue.pop();
+    }
+
+    std::sort(drawableVector.begin(), drawableVector.end(),
+              [](const Drawable& a, const Drawable& b) {
+                  return a.m_layer < b.m_layer;
+              });
+
+    for (const Drawable& d : drawableVector) {
+        int scale = 3;
+        SDL_Rect srcRect;
+        SDL_Rect destRect;
+
+        
+        srcRect.x =  d.m_width * d.m_column ;
+        srcRect.y =  d.m_height * d.m_row ;
+        destRect.x = d.m_x*scale;
+        destRect.y = d.m_y*scale;
+        srcRect.w  = d.m_width;
+        srcRect.h  = d.m_height;
+        destRect.w = d.m_width*scale;
+        destRect.h = d.m_height*scale;
+        SDL_RenderCopyEx(d.m_pRenderer, m_textureMap[d.m_id], &srcRect,
+                          &destRect, 0, 0, d.m_flip);
+    }
+        
 }
 
 void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, SDL_RendererFlip flip){

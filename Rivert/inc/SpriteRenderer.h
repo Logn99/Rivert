@@ -11,7 +11,7 @@
 class SpriteRenderer: public Component{
 
 public: 
-    SpriteRenderer(GameObject* parent,std::string id,int width, int height);
+    SpriteRenderer(GameObject* parent,std::string id,int width, int height,int layer);
 
     void setSprite(std::string id,int width, int height);
 
@@ -34,6 +34,7 @@ private:
     std::string m_spriteId;
     int m_spriteWidth;
     int m_spriteHeight;
+    int m_layer;
     SDL_RendererFlip flip;
 
 };

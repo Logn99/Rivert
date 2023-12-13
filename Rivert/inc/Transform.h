@@ -13,6 +13,7 @@ public:
         m_parent = parent;
         m_position = Vector2D(0,0);
     }
+    
     void init(){}
     void update() {}
     void clean() {}
