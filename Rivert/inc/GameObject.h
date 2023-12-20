@@ -5,7 +5,7 @@
 #include<vector>
 #include"Component.h"
 #include"Rivert.h"
-#include"Transform.h"
+
 
 
 class GameObject{
@@ -13,8 +13,10 @@ public:
     GameObject(std::string tag);
     ~GameObject(){}
     void init();
+    void postInit();
     void draw();
     void update();
+    
     void clean();
 
     std::string getTag(){

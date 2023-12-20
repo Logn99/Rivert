@@ -1,6 +1,6 @@
 #pragma once
 #include <math.h>
-
+#include <cstdlib>
 
 class Vector2D
 {
@@ -66,6 +66,12 @@ public:
         return *this;
     }
 
+    Vector2D(Vector2D &t)       //copy constructor
+    {
+        m_x = t.m_x;
+        m_y = t.m_y;
+    }
+
     
     void normalize()
     {
@@ -74,6 +80,10 @@ public:
         {
             (*this) *= 1 / l;
         }
+    }
+
+    Vector2D abs(){
+        return Vector2D(std::abs(m_x), std::abs(m_y));
     }
     
     float m_x;

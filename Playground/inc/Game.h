@@ -2,14 +2,10 @@
 
 #include<iostream>
 #include<vector>
+#include"Rivert.h"
+#include"PlayerController.h"
 
-#include "Rivert.h"
-#include "Window.h"
-#include "GameObject.h"
-#include "Tilemap.h"
 // Tmp
-#include "SpriteRenderer.h"
-
 class Game
 {
 public:
@@ -18,15 +14,10 @@ public:
   
     void init();
     void start();
-    
     void handleEvents();
     void update();
     void draw();
-    
     void clean();
-
-
-
     bool running(){return m_bRunning;}
 
 private:
@@ -36,11 +27,7 @@ private:
 
     bool m_bRunning;
 
-
-    // Tmp
-    GameObject* gameObject;
-    GameObject* gameObject_Background;
-    TileMap* tileMap;
+    ECS* ecs;
 };
 typedef Game TheGame;
 

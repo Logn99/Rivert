@@ -5,7 +5,7 @@ set(EXE_NAME Playground)
 set(EXE_SOURCES
     src/Game.cpp
     src/main.cpp
-    src/PlayerController.cpp
+    
     # Add all source files for the executable
 
 )

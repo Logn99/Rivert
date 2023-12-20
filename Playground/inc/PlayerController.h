@@ -1,22 +1,40 @@
-#include<Behaviour.h>
-#include<InputHandler.h>
-#include<Transform.h>
-#include"SpriteRenderer.h"
+#pragma once
+#include"Rivert.h"
 
-class PlayerController : public Behaviour{
+#include<iostream>
+class PlayerController : public ScriptObject{
+    public:
+        PlayerController(ECS* ecs){ m_ecs =ecs; }
 
-public:
+        void init(){
+            
+            transform = m_entity->getComponent<Transform>();
+            spriteRenderer = m_entity->getComponent<SpriteRenderer>();
+            vel = new Vector2D();
+        }
 
-    PlayerController(GameObject* parent):Behaviour(parent){}
-    void init();
-    void update();
+        void update(){
+            if(InputHandler::getInstance()->isKeyDown(SDL_SCANCODE_D)){
+                vel->setX(1);
+            }else{
+                vel->setX(0);
+            }
+            if(InputHandler::getInstance()->isKeyDown(SDL_SCANCODE_A)){
+                transform->scale.setX(1);
+            }
+            if(InputHandler::getInstance()->isKeyDown(SDL_SCANCODE_W)){
+                transform->scale.setY(5);
+            }
+            if(InputHandler::getInstance()->isKeyDown(SDL_SCANCODE_S)){
+                transform->scale.setY(1);
+            }
 
-private:
-    Transform* m_position;
-    SpriteRenderer* m_spriteRenderer;
-    int x;
-    int y;
-    int speed;
+            transform->position =transform->position + *vel;
+        }
 
-
+private:    
+    Transform* transform;
+    SpriteRenderer* spriteRenderer;
+    Vector2D* vel;
+    ECS* m_ecs;
 };

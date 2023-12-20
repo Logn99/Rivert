@@ -7,11 +7,9 @@ set(LIB_SOURCES
     src/Rivert.cpp
     src/InputHandler.cpp
     src/TextureManager.cpp
-    src/SpriteRenderer.cpp
-    src/GameObject.cpp
-    src/Transform.cpp
-    src/Behaviour.cpp
-    src/Tilemap.cpp
+    src/RenderSystem.cpp
+    src/ScriptSystem.cpp
+    src/ECS.cpp
     # Add all source files in the library
 
 )
