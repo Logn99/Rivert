@@ -4,31 +4,13 @@
 #include<string>
 #include<vector>
 #include"Component.h"
-#include"Rivert.h"
+#include"Entity.h"
 
+class Tile:ScriptObject{
 
-
-class GameObject{
 public:
-    GameObject(std::string tag);
-    ~GameObject(){}
-    void init();
-    void postInit();
-    void draw();
-    void update();
-    
-    void clean();
-
-    std::string getTag(){
-        return m_tag;
-    }
-    void addComponent(Component* component);
-
-    Component* getComponent(int type);
-    
 
 private:
-    std::vector<Component*> m_components;
-    std::string m_tag;
+
 };
 

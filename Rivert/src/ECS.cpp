@@ -6,7 +6,10 @@ void ECS::init(){
     renderSystem = new RenderSystem();
     renderSystem->setRenderer(Window::getInstance()->getRenderer());
     // Scriptsystem
+    
+    animationSystem = new AnimationSystem();
     scriptSystem = new ScriptSystem(); 
+    
     // Animationsystem
 
     // Collisionsystem
@@ -16,6 +19,7 @@ void ECS::init(){
 
 void ECS::update(){
     scriptSystem->update();
+    animationSystem->update();
 }
 
 void ECS::draw(){
@@ -52,6 +56,13 @@ void ECS::addSpriteRenderer(int entityId, std::string textureId,int layer){
     m_entities[entityId]->getComponent<SpriteRenderer>()->srcRect.w = w;
     renderSystem->registerComponent(m_entities[entityId]->getComponent<SpriteRenderer>(),
                                     m_entities[entityId]->getComponent<Transform>());
+}
+
+void ECS::addAnimator(int entityId, Animator* animator){
+    
+    m_entities[entityId]->m_components.push_back(animator);
+    
+    animationSystem->registerComponent(animator,m_entities[entityId]->getComponent<SpriteRenderer>());
 }
 
 

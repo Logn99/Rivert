@@ -3,7 +3,7 @@
 #include<string>
 #include<iostream>
 #include<type_traits>
-//#include"Component.h"
+
 class Component;
 
 class Entity {

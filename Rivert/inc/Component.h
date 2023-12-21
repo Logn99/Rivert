@@ -1,12 +1,12 @@
 #pragma once
 
 #include<vector>
+#include<map>
 #include<string>
 #include<Vector2D.h>
 #include<SDL2/SDL.h>
 
 #include"Entity.h"
-
 
 struct Component{
     virtual ~Component() = default;  // Add a virtual destructor
@@ -26,10 +26,6 @@ struct SpriteRenderer :Component{
     int              layer = 0;
 };
 
-
-
-
-
 class ScriptObject{
 public:
     ScriptObject(){}
@@ -47,6 +43,24 @@ struct Script: Component{
     ScriptObject script;
 };
 
+
+struct Animation: Component{
+    int frameTime = 0;
+    int currentTime = 0;
+    int lastTime = 0;
+    int frame = 0;
+    int maxFrame = 0;
+    int row = 0; 
+    int spriteWidth;
+    int spriteHeight;
+
+    std::string animationId;
+};
+
+struct Animator: Component{
+    std::map<std::string,Animation*> animations;
+    std::string currentAnimation;
+};
 
 
 	

@@ -4,7 +4,7 @@
 #include<vector>
 #include"Rivert.h"
 #include"PlayerController.h"
-
+#include"TileMap.h"
 // Tmp
 class Game
 {

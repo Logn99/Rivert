@@ -10,6 +10,7 @@ set(LIB_SOURCES
     src/RenderSystem.cpp
     src/ScriptSystem.cpp
     src/ECS.cpp
+    src/AnimationSystem.cpp
     # Add all source files in the library
 
 )

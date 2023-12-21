@@ -4,9 +4,9 @@
 
 #include"ScriptSystem.h"
 #include"RenderSystem.h"
+#include"AnimationSystem.h"
 #include"Entity.h"
 #include"Component.h"
-
 
 class ECS{
 public:
@@ -33,6 +33,8 @@ void addSpriteRenderer(int entityId, std::string textureId,int layer);
 // Systems
 void addScript(int entityId,ScriptObject* script);
 
+void addAnimator(int entityId, Animator* animator);
+
 
 private:
 
@@ -40,4 +42,5 @@ private:
 
    RenderSystem* renderSystem; 
    ScriptSystem* scriptSystem;
+   AnimationSystem* animationSystem;
 };

@@ -14,19 +14,22 @@ void Game::init(){
     TextureManager::getInstance()->load("build/assets/player.png", "player_sheet", Window::getInstance()->getRenderer());
     
     // Tmp --------------------------------------------------------------------------------
+    
     ecs = new ECS();
     ecs->init();
     ecs->createEntity(0);
     ecs->addTransform(0);
-    ecs->addSpriteRenderer(0,"player",1);
+    ecs->addSpriteRenderer(0,"player_sheet",2);
+    ecs->addAnimator(0,new Animator());
     ecs->addScript(0,new PlayerController(ecs));
 
     ecs->createEntity(1);
     ecs->addTransform(1);
     ecs->addSpriteRenderer(1,"background",0);
 
-    
-    
+    ecs->createEntity(2);
+    ecs->addTransform(2);
+    ecs->addScript(2,new TileMap(ecs,"tileset"));
 }  
 
 void Game::start(){
