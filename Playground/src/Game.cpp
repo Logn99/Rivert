@@ -17,19 +17,22 @@ void Game::init(){
     
     ecs = new ECS();
     ecs->init();
-    ecs->createEntity(0);
-    ecs->addTransform(0);
-    ecs->addSpriteRenderer(0,"player_sheet",2);
-    ecs->addAnimator(0,new Animator());
-    ecs->addScript(0,new PlayerController(ecs));
+    ecs->createEntity("Player");
+    int entityId = ecs->getId("Player");
+    ecs->addTransform(entityId);
+    ecs->addSpriteRenderer(entityId,"player_sheet",2);
+    ecs->addAnimator(entityId,new Animator());
+    ecs->addScript(entityId,new PlayerController(ecs));
 
-    ecs->createEntity(1);
-    ecs->addTransform(1);
-    ecs->addSpriteRenderer(1,"background",0);
+    ecs->createEntity("Background");
+    entityId = ecs->getId("Background");
+    ecs->addTransform(entityId);
+    ecs->addSpriteRenderer(entityId,"background",0);
 
-    ecs->createEntity(2);
-    ecs->addTransform(2);
-    ecs->addScript(2,new TileMap(ecs,"tileset"));
+    //ecs->createEntity("Tilemap");
+    //ecs->addTransform(3);
+    //ecs->addScript(3,new TileMap(ecs,"tileset"));
+    
 }  
 
 void Game::start(){

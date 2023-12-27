@@ -13,12 +13,12 @@ void RenderSystem::Update(){
         // get components for calculation
         SpriteRenderer* spriteRenderer  = m_components[i].first;
         Transform* transform  = m_components[i].second;
-
+        Transform* cameraTransform = m_camera->getComponent<Transform>();
         // calculate the destination redering
         SDL_Rect destRect;
         
-        destRect.x = transform->position.getX()*m_globalScale;
-        destRect.y = transform->position.getY()*m_globalScale;
+        destRect.x = (transform->position.getX()-cameraTransform->position.getX())*m_globalScale;
+        destRect.y = (transform->position.getY()-cameraTransform->position.getY())*m_globalScale;
         destRect.w = spriteRenderer->srcRect.w *m_globalScale* transform->scale.getX();
         destRect.h = spriteRenderer->srcRect.h *m_globalScale* transform->scale.getY();
 

@@ -11,7 +11,6 @@ class PlayerController : public ScriptObject{
             transform = m_entity->getComponent<Transform>();
             spriteRenderer = m_entity->getComponent<SpriteRenderer>();
             vel = new Vector2D();
-            
 
             idleAnimation = new Animation();
             idleAnimation->animationId = "idle";
@@ -34,13 +33,14 @@ class PlayerController : public ScriptObject{
             animator->animations[idleAnimation->animationId] = idleAnimation;
             animator->currentAnimation = idleAnimation->animationId;
 
-
+            int cameraId = m_ecs->getId("camera");
+            cameraTransform = m_ecs->getEntity(cameraId)->getComponent<Transform>();
         }
 
         void update(){
             animator->currentAnimation = idleAnimation->animationId;
             vel->setX(0);
-            vel->setY(0);
+            vel->setY(2);
             if(InputHandler::getInstance()->isKeyDown(SDL_SCANCODE_D)){
                 vel->setX(1);
                 spriteRenderer->flip = SDL_FLIP_NONE;
@@ -60,14 +60,29 @@ class PlayerController : public ScriptObject{
                animator->currentAnimation = runAnimation->animationId;
             }
             transform->position =transform->position + *vel*2;
+            cameraTransform->position.setX(cameraTransform->position.getX() + vel->getX()*2);
+            if(transform->position.getY()> 208-32){
+                transform->position.setY(208-32);
+            }
         }
 
 private:    
+    // Components
     Transform* transform;
+    Transform* cameraTransform;
     SpriteRenderer* spriteRenderer;
     Animator* animator;
+
+    // Animations
     Animation* runAnimation;
     Animation* idleAnimation;
-    Vector2D* vel;
+
+    // ECS
     ECS* m_ecs;
+
+    // Script Variables
+    Vector2D* vel;
+
+    // 208
+    
 };
